@@ -47,7 +47,7 @@ public interface UserApi {
     ResponseEntity<String> createUser(@ApiParam(value = "User object that has to be added" ,required=true )  @Valid @RequestBody CreateUserRequest body,@ApiParam(value = "Podpis X-HMAC-SIGNATURE" ,required=true) @RequestHeader(value="X-HMAC-SIGNATURE", required=true) String X_HMAC_SIGNATURE);
 
 
-    @ApiOperation(value = "Get user list", nickname = "getAllUsers", notes = "Gets all users data", response = UserListResponse.class, authorizations = {
+    @ApiOperation(value = "Get user list", nickname = "getAllUsers", notes = "Get all users data", response = UserListResponse.class, authorizations = {
         @Authorization(value = "basicAuth")
     }, tags={ "user", })
     @ApiResponses(value = { 
@@ -61,7 +61,7 @@ public interface UserApi {
     ResponseEntity<UserListResponse> getAllUsers();
 
 
-    @ApiOperation(value = "Take task", nickname = "takeTask", notes = "Update task data", response = UserTaskResponse.class, authorizations = {
+    @ApiOperation(value = "Take task", nickname = "takeTask", notes = "Take task (create UserTask)", response = UserTaskResponse.class, authorizations = {
         @Authorization(value = "basicAuth")
     }, tags={ "user", })
     @ApiResponses(value = { 
@@ -72,7 +72,7 @@ public interface UserApi {
         @ApiResponse(code = 422, message = "Unprocessable entity.", response = Error.class) })
     @RequestMapping(value = "/user/takeTask",
         produces = { "application/json" }, 
-        method = RequestMethod.PUT)
+        method = RequestMethod.POST)
     ResponseEntity<String> takeTask(@ApiParam(value = "" ,required=true) @RequestHeader(value="taskId", required=true) UUID taskId,@ApiParam(value = "" ,required=true) @RequestHeader(value="userId", required=true) UUID userId);
 
 

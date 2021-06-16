@@ -60,7 +60,7 @@ public interface TaskApi {
     ResponseEntity<Void> deleteTask(@ApiParam(value = "",required=true) @PathVariable("id") UUID id);
 
 
-    @ApiOperation(value = "Get tasks list", nickname = "getAllTasks", notes = "Gets all tasks data", response = TaskListResponse.class, authorizations = {
+    @ApiOperation(value = "Get tasks list", nickname = "getAllTasks", notes = "Get all tasks data", response = TaskListResponse.class, authorizations = {
         @Authorization(value = "basicAuth")
     }, tags={ "task", })
     @ApiResponses(value = { 
@@ -74,7 +74,7 @@ public interface TaskApi {
     ResponseEntity<TaskListResponse> getAllTasks();
 
 
-    @ApiOperation(value = "Get task", nickname = "getTaskById", notes = "Gets specified task data", response = TaskResponse.class, authorizations = {
+    @ApiOperation(value = "Get task", nickname = "getTaskById", notes = "Get specified task data", response = TaskResponse.class, authorizations = {
         @Authorization(value = "basicAuth")
     }, tags={ "task", })
     @ApiResponses(value = { 
